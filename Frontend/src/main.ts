@@ -1,3 +1,4 @@
+import './styles.css';
 import { renderHome } from './pages/home';
 import { renderRegister } from './pages/register';
 import { renderPerfil } from './pages/perfil';

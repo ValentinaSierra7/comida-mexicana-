@@ -2,86 +2,111 @@ export function renderSubirRecetas() {
   const container = document.getElementById('app-content') || document.getElementById('app');
   const app = container as HTMLElement;
   app.innerHTML = `
-  <main class="px-4 sm:px-10 md:px-20 lg:px-40 flex flex-1 justify-center py-10">
-    <div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
-      <div class="flex flex-wrap justify-between gap-3 p-4">
-        <div class="flex min-w-72 flex-col gap-3">
-          <p class="text-neutral-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Comparte tu Sazón: Sube tu Receta</p>
-          <p class="text-neutral-700 dark:text-neutral-200 text-base font-normal leading-normal">Rellena los siguientes campos para compartir tu creación con la comunidad.</p>
+    <div class="min-h-screen py-8 px-4 flex items-center justify-center bg-cover bg-center relative" style='background-image: url("https://images.unsplash.com/photo-1547592180-85f173990554?w=1600&q=80");'>
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      
+      <div class="formal-card w-full max-w-4xl animate-fade-in relative z-10 flex flex-col md:flex-row overflow-hidden">
+        
+        <!-- Decoration Side -->
+        <div class="hidden md:block w-1/3 bg-gray-100 dark:bg-gray-800 bg-cover bg-center relative" 
+             style='background-image: url("https://images.unsplash.com/photo-1556910103-1c02745a30bf?w=800&q=80");'>
+           <div class="absolute inset-0 bg-primary/20 dark:bg-black/40"></div>
+           <div class="absolute bottom-8 left-8 right-8 text-white">
+             <span class="material-symbols-outlined text-4xl mb-4">checklist_rtl</span>
+             <h2 class="text-2xl font-bold mb-2">Comparte tu Sazón</h2>
+             <p class="text-sm text-white/90">Ayuda a crecer nuestra comunidad compartiendo tus mejores recetas secretas.</p>
+           </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="w-full md:w-2/3 p-8 md:p-12 overflow-y-auto max-h-[90vh]">
+          <div class="flex justify-between items-center mb-6">
+             <div class="flex flex-col">
+               <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">Nueva Receta</h1>
+               <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Paso 1 de 3: Detalles Básicos.</p>
+             </div>
+             <a href="#/home" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-gray-500">
+               <span class="material-symbols-outlined">close</span>
+             </a>
+          </div>
+
+          <form class="space-y-6">
+            <!-- Nombre -->
+            <div class="space-y-2">
+              <label class="formal-label" for="recipeName">Nombre del Platillo</label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-3.5 text-gray-400">restaurant</span>
+                <input id="recipeName" type="text" class="formal-input pl-10" placeholder="Ej. Tacos al Pastor" />
+              </div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="space-y-2">
+              <label class="formal-label" for="shortDesc">Descripción Breve</label>
+              <textarea id="shortDesc" class="formal-input min-h-[100px]" placeholder="Cuenta la historia de tu platillo o por qué es especial..."></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Categoría -->
+              <div class="space-y-2">
+                <label class="formal-label" for="categorySelect">Categoría</label>
+                <div class="relative">
+                   <select id="categorySelect" class="formal-input appearance-none">
+                     <option value="" disabled selected>Seleccionar...</option>
+                     <option value="tacos">Tacos</option>
+                     <option value="enchiladas">Enchiladas</option>
+                     <option value="sopas">Sopas</option>
+                     <option value="postres">Postres</option>
+                     <option value="bebidas">Bebidas</option>
+                   </select>
+                   <span class="material-symbols-outlined absolute right-3 top-3.5 text-gray-400 pointer-events-none">expand_more</span>
+                </div>
+              </div>
+
+               <!-- Prep Time -->
+              <div class="space-y-2">
+                <label class="formal-label" for="prepTime">Tiempo de Prep. (min)</label>
+                 <div class="relative">
+                   <span class="material-symbols-outlined absolute left-3 top-3.5 text-gray-400">timer</span>
+                   <input id="prepTime" type="number" class="formal-input pl-10" placeholder="Ej. 30" />
+                 </div>
+              </div>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="space-y-2 pt-2">
+               <label class="formal-label">Foto del Platillo</label>
+               <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl cursor-pointer bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group relative overflow-hidden">
+                  
+                  <div class="flex flex-col items-center justify-center pt-5 pb-6 z-10" id="uploadPlaceholder">
+                      <div class="p-3 bg-white dark:bg-gray-700 rounded-full shadow-sm mb-3 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-primary text-2xl">add_a_photo</span>
+                      </div>
+                      <p class="mb-1 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold text-primary">Haz clic para subir</span> o arrastra</p>
+                      <p class="text-xs text-gray-400">PNG, JPG (Max. 5MB)</p>
+                  </div>
+                  <div id="imagePreview" class="absolute inset-0 bg-cover bg-center hidden"></div>
+                  <input id="dropzone-file" type="file" class="hidden" accept="image/*" />
+               </label>
+            </div>
+
+            <div class="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-gray-800">
+               <button type="button" class="text-gray-500 dark:text-gray-400 font-medium hover:text-gray-900 dark:hover:text-white transition-colors text-sm">Guardar Borrador</button>
+               <button id="nextBtn" type="button" class="formal-btn-primary gap-2">
+                 Siguiente Paso
+                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+               </button>
+            </div>
+
+          </form>
         </div>
       </div>
-      <div class="flex flex-col gap-3 p-4 mt-6">
-        <div class="flex gap-6 justify-between">
-          <p class="text-neutral-900 dark:text-white text-base font-medium leading-normal">Paso 1 de 5: Información General</p>
-        </div>
-        <div class="rounded-full bg-neutral-200 dark:bg-neutral-700">
-          <div class="h-2 rounded-full bg-primary" style="width: 20%;"></div>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 p-4 mt-8">
-  <div class="flex flex-col gap-6 md:col-span-2">
-  <label class="flex flex-col min-w-40 flex-1">
-  <p class="text-neutral-900 dark:text-white text-base font-medium leading-normal pb-2">Nombre de la receta</p>
-  <input id="recipeName" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-neutral-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-background-dark/50 focus:border-primary h-14 placeholder:text-neutral-700 dark:placeholder:text-neutral-200/60 p-[15px] text-base font-normal leading-normal" placeholder="Ej: Tacos al Pastor Tradicionales" value=""/>
-  </label>
-  <label class="flex flex-col min-w-40 flex-1">
-  <p class="text-neutral-900 dark:text-white text-base font-medium leading-normal pb-2">Descripción corta</p>
-  <textarea id="shortDesc" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-neutral-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-background-dark/50 focus:border-primary min-h-36 placeholder:text-neutral-700 dark:placeholder:text-neutral-200/60 p-[15px] text-base font-normal leading-normal" placeholder="Describe tu platillo en una o dos frases que inviten a probarlo."></textarea>
-  </label>
-  </div>
-  <div class="md:col-span-2">
-  <label class="flex flex-col min-w-40 flex-1">
-  <p class="text-neutral-900 dark:text-white text-base font-medium leading-normal pb-2">Categorías</p>
-  <div class="flex flex-wrap items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-background-dark/50 p-2 min-h-14">
-  <input id="categoryInput" class="flex-1 bg-transparent focus:outline-none p-2 text-neutral-900 dark:text-white placeholder:text-neutral-700 dark:placeholder:text-neutral-200/60" placeholder="Añade una categoría..."/>
-  </div>
-  </label>
-  </div>
-  <div class="md:col-span-2">
-  <label class="flex flex-col min-w-40 flex-1">
-  <p class="text-neutral-900 dark:text-white text-base font-medium leading-normal pb-2">Imagen del platillo</p>
-  <div class="flex justify-center items-center w-full">
-  <label class="flex flex-col items-center justify-center w-full h-64 border-2 border-neutral-200 dark:border-neutral-700 border-dashed rounded-lg cursor-pointer bg-white/50 dark:bg-background-dark/30 hover:bg-neutral-100/50 dark:hover:bg-background-dark/50 transition-colors" for="dropzone-file">
-  <div class="flex flex-col items-center justify-center pt-5 pb-6 text-neutral-700 dark:text-neutral-200">
-  <span class="material-symbols-outlined !text-5xl text-neutral-700/60 dark:text-neutral-200/60">upload_file</span>
-  <p class="mb-2 text-sm"><span class="font-semibold">Haz clic para subir</span> o arrastra y suelta</p>
-  <p class="text-xs">SVG, PNG, JPG o GIF (MAX. 800x400px)</p>
-  </div>
-  <input class="hidden" id="dropzone-file" type="file"/>
-  </label>
-  </div>
-  <div id="imagePreview" class="mt-6 hidden">
-  <p class="text-neutral-900 dark:text-white text-base font-medium leading-normal pb-2">Vista Previa</p>
-  <div class="rounded-lg overflow-hidden shadow-md h-48 bg-center bg-cover" id="previewImage"></div>
-  </div>
-  </label>
-  </div>
-  </div>
-  <div class="flex justify-between items-center mt-12 p-4">
-  <button id="saveDraft" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-neutral-200/80 dark:bg-neutral-700 text-neutral-900 dark:text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-neutral-200 dark:hover:bg-neutral-700/80 transition-colors">
-  <span class="truncate">Guardar Borrador</span>
-  </button>
-  <div class="flex gap-4">
-  <button id="prevBtn" class="flex min-w-[84px] max-w-[480px] cursor-not-allowed items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200/60 text-base font-bold leading-normal tracking-[0.015em] opacity-50" disabled>
-  <span class="material-symbols-outlined">arrow_back</span>
-  <span class="truncate">Anterior</span>
-  </button>
-  <button id="nextBtn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
-  <span class="truncate">Siguiente</span>
-  <span class="material-symbols-outlined">arrow_forward</span>
-  </button>
-  </div>
-  </div>
-  </div>
-  </main>
-  </div>
+    </div>
   `;
 
   const nextBtn = document.getElementById('nextBtn');
-  const saveDraft = document.getElementById('saveDraft');
   const fileInput = document.getElementById('dropzone-file') as HTMLInputElement | null;
   const imagePreview = document.getElementById('imagePreview');
-  const previewImage = document.getElementById('previewImage');
 
   if (fileInput) {
     fileInput.addEventListener('change', (e) => {
@@ -90,8 +115,14 @@ export function renderSubirRecetas() {
         const reader = new FileReader();
         reader.onload = (event) => {
           const dataUrl = event.target?.result as string;
-          if (previewImage) previewImage.style.backgroundImage = `url('${dataUrl}')`;
-          if (imagePreview) imagePreview.classList.remove('hidden');
+          // Hide placeholder, show preview
+          const placeholder = document.getElementById('uploadPlaceholder');
+          if (placeholder) placeholder.classList.add('hidden');
+
+          if (imagePreview) {
+            imagePreview.style.backgroundImage = `url('${dataUrl}')`;
+            imagePreview.classList.remove('hidden');
+          }
         };
         reader.readAsDataURL(file);
       } else {
@@ -100,5 +131,4 @@ export function renderSubirRecetas() {
     });
   }
   if (nextBtn) nextBtn.addEventListener('click', () => { alert('Siguiente (demo). Implementa la lógica multistep y subida al backend.'); });
-  if (saveDraft) saveDraft.addEventListener('click', () => { alert('Borrador guardado localmente.'); });
 }

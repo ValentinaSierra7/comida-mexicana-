@@ -76,4 +76,4 @@ class Favorite(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     user = relationship("User", back_populates="favorites")
-    recipe = relationship("Favorite", back_populates="favorites")
+    recipe = relationship("Recipe", back_populates="favorites")

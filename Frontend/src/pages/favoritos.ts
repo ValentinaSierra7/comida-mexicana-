@@ -3,7 +3,7 @@ import { navigateTo } from '../main';
 export function renderFavoritos() {
   const app = (document.getElementById('app-content') || document.getElementById('app')) as HTMLElement;
   const favorites = JSON.parse(localStorage.getItem('favorites') || '[]') as string[];
-  
+
   const recipes: Record<string, { name: string; description: string; image: string }> = {
     tacos: { name: 'Tacos al Pastor', description: 'Deliciosos tacos con carne marinada, piña y salsa especial', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=300&fit=crop' },
     enchiladas: { name: 'Enchiladas Verdes', description: 'Tortillas enrolladas con pollo, salsa verde casera y queso fundido', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=300&fit=crop' },
@@ -13,45 +13,48 @@ export function renderFavoritos() {
     bebidas: { name: 'Agua de Jamaica', description: 'Bebida tradicional refrescante con flores de jamaica', image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&h=300&fit=crop' },
   };
 
-  const favContent = favorites.length === 0 
-    ? `<div class="text-center py-12">
-        <div class="text-6xl mb-4">❤️</div>
-        <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">No tienes favoritos aún</h2>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Explora nuestras recetas y guarda tus favoritas</p>
-        <button onclick="window.location.hash = '#/home'" class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">Explorar Recetas</button>
+  const favContent = favorites.length === 0
+    ? `<div class="formal-card p-12 text-center">
+        <span class="material-symbols-outlined text-6xl mb-4" style="color: var(--text-tertiary);">favorite_border</span>
+        <h2 class="formal-section-title" style="font-size: var(--text-xl); margin-bottom: var(--space-2);">No tienes favoritos aún</h2>
+        <p class="formal-section-subtitle" style="margin-bottom: var(--space-6);">Explora nuestras recetas y guarda tus favoritas</p>
+        <a href="#/home" class="formal-btn-primary inline-block">Explorar Recetas</a>
        </div>`
     : `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         ${favorites.map(id => {
-          const recipe = recipes[id];
-          if (!recipe) return '';
-          return `
-            <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group" onclick="window.location.hash = '#/${id}'">
-            <div class="bg-center bg-cover h-48 group-hover:scale-110 transition-transform duration-300 overflow-hidden relative" style="background-image: url('${recipe.image}')">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            <div class="p-4">
-            <h3 class="text-slate-900 dark:text-slate-100 font-bold text-lg mb-2">${recipe.name}</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">${recipe.description}</p>
-            <div class="flex gap-2">
-            <button class="flex-1 bg-primary text-white py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">Ver Receta</button>
-            <button class="removeFavBtn px-3 py-2 rounded-lg bg-red-200 dark:bg-red-700 hover:bg-red-300 dark:hover:bg-red-600 transition-colors" data-recipe-id="${id}">❌</button>
-            </div>
-            </div>
+      const recipe = recipes[id];
+      if (!recipe) return '';
+      return `
+            <div class="formal-card overflow-hidden cursor-pointer group transition-all hover:shadow-lg" onclick="window.location.hash = '#/${id}'">
+              <div class="relative h-48 overflow-hidden">
+                <div class="bg-center bg-cover h-full w-full group-hover:scale-105 transition-transform duration-500" style="background-image: url('${recipe.image}');">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-bold text-lg mb-2" style="color: var(--text-primary);">${recipe.name}</h3>
+                <p class="text-sm mb-4" style="color: var(--text-secondary);">${recipe.description}</p>
+                <div class="flex gap-2">
+                  <button class="formal-btn-primary flex-1 text-sm py-2">Ver Receta</button>
+                  <button class="removeFavBtn px-3 py-2 rounded-lg transition-colors" style="background-color: var(--color-error-light); color: var(--color-error); font-size: var(--text-lg);" data-recipe-id="${id}">❌</button>
+                </div>
+              </div>
             </div>
           `;
-        }).join('')}
+    }).join('')}
        </div>`;
 
-  const container = document.getElementById('app-content') || document.getElementById('app');
-  const app = container as HTMLElement;
   app.innerHTML = `
-  <main class="flex-1 px-4 sm:px-8 md:px-10 py-8 max-w-7xl mx-auto w-full">
+  <div class="formal-container py-8">
+    <!-- Header -->
     <div class="mb-8">
-      <h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em] mb-2">Mis Recetas Favoritas</h1>
-      <p class="text-slate-600 dark:text-slate-400">${favorites.length} receta${favorites.length !== 1 ? 's' : ''} guardada${favorites.length !== 1 ? 's' : ''}</p>
+      <h1 class="formal-section-title">Mis Recetas Favoritas</h1>
+      <p class="formal-section-subtitle">${favorites.length} receta${favorites.length !== 1 ? 's' : ''} guardada${favorites.length !== 1 ? 's' : ''}</p>
     </div>
+
+    <!-- Content -->
     ${favContent}
-  </main>
+  </div>
   `;
 
   // Agregar listeners para remover favoritos

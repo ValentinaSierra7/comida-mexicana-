@@ -1,0 +1,389 @@
+/* ============================================
+   SABOR DE MÉXICO - FORMAL DESIGN SYSTEM
+   ============================================ */
+
+:root {
+  /* ========== COLOR PALETTE - LIGHT MODE ========== */
+
+  /* Primary Brand Colors - Professional Blue */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #3b82f6;
+  --color-primary-subtle: #dbeafe;
+
+  /* Neutral Colors - Professional Grays */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  /* Semantic Colors */
+  --color-success: #059669;
+  --color-success-light: #d1fae5;
+  --color-error: #dc2626;
+  --color-error-light: #fee2e2;
+  --color-warning: #d97706;
+  --color-warning-light: #fef3c7;
+  --color-info: #0284c7;
+  --color-info-light: #e0f2fe;
+
+  /* Background Colors */
+  --bg-primary: #f8fafc;
+  /* Slate 50 - Professional Off-white */
+  --bg-secondary: #f1f5f9;
+  /* Slate 100 */
+  --bg-tertiary: #e2e8f0;
+  /* Slate 200 */
+  --bg-elevated: #ffffff;
+  /* Pure White for Cards */
+
+  /* Text Colors */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-inverse: #ffffff;
+
+  /* Border Colors */
+  --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
+  --border-focus: #2563eb;
+
+  /* ========== TYPOGRAPHY ========== */
+
+  /* Font Families */
+  --font-primary: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-lg: 1.125rem;
+  /* 18px */
+  --text-xl: 1.25rem;
+  /* 20px */
+  --text-2xl: 1.5rem;
+  /* 24px */
+  --text-3xl: 1.875rem;
+  /* 30px */
+  --text-4xl: 2.25rem;
+  /* 36px */
+  --text-5xl: 3rem;
+  /* 48px */
+
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+  /* ========== SPACING ========== */
+
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+  --space-16: 4rem;
+  /* 64px */
+
+  /* ========== BORDERS & RADIUS ========== */
+
+  --radius-sm: 0.375rem;
+  /* 6px */
+  --radius-md: 0.5rem;
+  /* 8px */
+  --radius-lg: 0.75rem;
+  /* 12px */
+  --radius-xl: 1rem;
+  /* 16px */
+  --radius-full: 9999px;
+
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* ========== SHADOWS ========== */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.1);
+
+  /* ========== TRANSITIONS ========== */
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== DARK MODE ========== */
+
+.dark {
+  /* Primary Colors - Adjusted for dark mode */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-primary-light: #60a5fa;
+  --color-primary-subtle: #1e3a8a;
+
+  /* Background Colors */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-elevated: #1e293b;
+
+  /* Text Colors */
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0f172a;
+
+  /* Border Colors */
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  --border-focus: #3b82f6;
+
+  /* Shadows - Lighter for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ========== GLOBAL STYLES ========== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+  /* Subtle Gradient - Enforced */
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== UTILITY CLASSES ========== */
+
+/* Formal Card */
+.formal-card {
+  background-color: var(--bg-elevated);
+  border: var(--border-width) solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.formal-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Formal Button - Primary */
+.formal-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-inverse);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.formal-btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.formal-btn-primary:focus {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.formal-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Formal Button - Secondary */
+.formal-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: var(--border-width) solid var(--border-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.formal-btn-secondary:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-secondary);
+}
+
+.formal-btn-secondary:focus {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* Formal Input */
+.formal-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: var(--border-width) solid var(--border-primary);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.formal-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-focus);
+}
+
+.formal-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.formal-input:disabled {
+  background-color: var(--bg-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Formal Label */
+.formal-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+}
+
+/* Formal Section */
+.formal-section {
+  padding: var(--space-8) 0;
+}
+
+.formal-section-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.formal-section-subtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+/* Formal Container */
+.formal-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Formal Divider */
+.formal-divider {
+  height: var(--border-width);
+  background-color: var(--border-primary);
+  border: none;
+  margin: var(--space-6) 0;
+}
+
+/* Formal Badge */
+.formal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary-dark);
+}
+
+/* Formal Avatar */
+.formal-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  border: var(--border-width-thick) solid var(--border-primary);
+  object-fit: cover;
+}
+
+.formal-avatar-lg {
+  width: 64px;
+  height: 64px;
+}
+
+/* Formal Link */
+.formal-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: color var(--transition-fast);
+}
+
+.formal-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  :root {
+    --text-4xl: 1.875rem;
+    --text-5xl: 2.25rem;
+  }
+}
